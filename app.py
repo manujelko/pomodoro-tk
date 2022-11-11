@@ -2,7 +2,7 @@ from collections import deque
 import tkinter as tk
 from tkinter import ttk
 
-from frames import Timer
+from frames import Settings, Timer
 
 
 class PomodoroTimer(tk.Tk):
@@ -23,8 +23,11 @@ class PomodoroTimer(tk.Tk):
         container.grid()
         container.columnconfigure(0, weight=1)
 
-        timer_frame = Timer(container, self)
-        timer_frame.grid(row=0, column=0, sticky="NEWS")
+        # timer_frame = Timer(container, self)
+        # timer_frame.grid(row=0, column=0, sticky="NESW")
+
+        settings_frame = Settings(container, self)
+        settings_frame.grid(row=0, column=0, sticky="NESW")
 
 
 if __name__ == "__main__":
