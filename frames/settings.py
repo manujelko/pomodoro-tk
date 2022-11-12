@@ -6,9 +6,12 @@ class Settings(ttk.Frame):
     def __init__(self, parent, controller, show_timer):
         super().__init__(parent)
 
+        self["style"] = "Background.TFrame"
+
         settings_container = ttk.Frame(
             self,
-            padding="30 15 30 15"
+            padding="30 15 30 15",
+            style="Background.TFrame",
         )
 
         settings_container.grid(row=0, column=0, sticky="EW", padx=10, pady=10)
@@ -18,7 +21,8 @@ class Settings(ttk.Frame):
 
         pomodoro_label = ttk.Label(
             settings_container,
-            text="Pomodoro: "
+            text="Pomodoro: ",
+            style="LightText.TLabel",
         )
         pomodoro_label.grid(column=0, row=0, sticky="W")
 
@@ -37,6 +41,7 @@ class Settings(ttk.Frame):
         long_break_label = ttk.Label(
             settings_container,
             text="Long break time: ",
+            style="LightText.TLabel",
         )
         long_break_label.grid(column=0, row=1, sticky="W")
 
@@ -54,6 +59,7 @@ class Settings(ttk.Frame):
         short_break_label = ttk.Label(
             settings_container,
             text="Short break time: ",
+            style="LightText.TLabel",
         )
         short_break_label.grid(column=0, row=2, sticky="W")
 
@@ -71,7 +77,7 @@ class Settings(ttk.Frame):
         for child in settings_container.winfo_children():
             child.grid_configure(padx=5, pady=5)
 
-        button_container = ttk.Frame(self)
+        button_container = ttk.Frame(self, style="Background.TFrame")
         button_container.grid(sticky="EW", padx=10)
         button_container.columnconfigure(0, weight=1)
 
@@ -79,6 +85,7 @@ class Settings(ttk.Frame):
             button_container,
             text="Back",
             command=show_timer,
+            style="PomodoroButton.TButton",
             cursor="hand2",
         )
         timer_button.grid(column=0, row=0, sticky="EW", padx=2)

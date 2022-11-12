@@ -4,10 +4,44 @@ from tkinter import ttk
 
 from frames import Settings, Timer
 
+COLOR_PRIMARY = "#2e3f4f"
+COLOR_SECONDAY = "#293846"
+COLOR_LIGHT_BACKGROUND = "#fff"
+COLOR_LIGHT_TEXT = "#eee"
+COLOR_DARK_TEXT = "#8095a8"
+
 
 class PomodoroTimer(tk.Tk):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+        style = ttk.Style(self)
+        style.theme_use("clam")
+
+        style.configure("Timer.TFrame", background=COLOR_LIGHT_BACKGROUND)
+        style.configure("Background.TFrame", background=COLOR_PRIMARY)
+        style.configure(
+            "TimerText.TLabel",
+            background=COLOR_LIGHT_BACKGROUND,
+            foreground=COLOR_DARK_TEXT,
+            font="Courier 38",
+        )
+        style.configure(
+            "LightText.TLabel",
+            background=COLOR_PRIMARY,
+            foreground=COLOR_LIGHT_TEXT,
+        )
+        style.configure(
+            "PomodoroButton.TButton",
+            background=COLOR_SECONDAY,
+            foreground=COLOR_LIGHT_TEXT,
+        )
+        style.map(
+            "PomodoroButton.TButton",
+            background=[("active", COLOR_PRIMARY), ("disabled", COLOR_LIGHT_TEXT)]
+        )
+
+        self["background"] = COLOR_PRIMARY
 
         self.columnconfigure(0, weight=1)
         self.rowconfigure(2, weight=1)
